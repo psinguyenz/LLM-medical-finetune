@@ -1,4 +1,5 @@
 stages:
+  # Bước 1: Nạp dữ liệu thô từ Hugging Face
   data_ingestion:
     cmd: python src/data_ingestion.py --output data/raw
     deps:
@@ -6,6 +7,7 @@ stages:
     outs:
       - data/raw/medical_chatbot_raw.csv
 
+  # Bước 2: Tiền xử lý (Format ChatML & Split dữ liệu)
   data_preprocessing:
     cmd: python src/data_preprocessing.py --input data/raw/medical_chatbot_raw.csv --output data/processed
     deps:
@@ -14,7 +16,8 @@ stages:
     outs:
       - data/processed/train.jsonl
       - data/processed/val.jsonl
-  
+
+  # Bước 3: Xử lý dữ liệu số (Tokenization)
   data_processing:
     cmd: python src/data_processing.py --input_dir data/processed --output_dir data/tokenized --model_id Qwen/Qwen2.5-0.5B-Instruct
     deps:
@@ -24,3 +27,14 @@ stages:
     outs:
       - data/tokenized/train
       - data/tokenized/val
+
+  # Bước 4: Xây dựng và Huấn luyện mô hình (3 Epochs)
+  model_building:
+    # Lưu ý: Thêm export PYTHONPATH để tránh lỗi ModuleNotFoundError trên MINGW64
+    cmd: export PYTHONPATH=$PYTHONPATH:. && python src/model_building.py --input_dir data/tokenized --output_dir models/qwen-medical-finetuned
+    deps:
+      - data/tokenized/
+      - src/model_building.py
+      - src/data_processing.py
+    outs:
+      - models/qwen-medical-finetuned/final_adapter

@@ -65,7 +65,7 @@ def run_tokenization(input_dir, output_dir, model_id):
         outputs = tokenizer(
             examples['text'],
             truncation=True,
-            max_length=1024,
+            max_length=256,
             padding=False 
         )
         outputs["labels"] = outputs["input_ids"].copy()
