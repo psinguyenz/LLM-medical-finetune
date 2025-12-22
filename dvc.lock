@@ -1,7 +1,7 @@
 schema: '2.0'
 stages:
   data_ingestion:
-    cmd: python src/data_ingestion.py
+    cmd: python src/data_ingestion.py --output data/raw
     deps:
     - path: src/data_ingestion.py
       hash: md5
@@ -12,3 +12,24 @@ stages:
       hash: md5
       md5: 1d49cdcbeb950f858ec095319ae198f6
       size: 267520764
+  data_preprocessing:
+    cmd: python src/data_preprocessing.py --input 
+      data/raw/medical_chatbot_raw.csv --output data/processed
+    deps:
+    - path: data/raw/medical_chatbot_raw.csv
+      hash: md5
+      md5: 1d49cdcbeb950f858ec095319ae198f6
+      size: 267520764
+    - path: src/data_preprocessing.py
+      hash: md5
+      md5: d67b4809ec6e17fa771c03143222f023
+      size: 2414
+    outs:
+    - path: data/processed/train.jsonl
+      hash: md5
+      md5: 2b141932642dc2497e724aa7113e7431
+      size: 1071048
+    - path: data/processed/val.jsonl
+      hash: md5
+      md5: 806e7dedfcd158058a986d6fcf4b3be7
+      size: 121432

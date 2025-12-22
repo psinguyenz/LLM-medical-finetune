@@ -1,7 +1,16 @@
 stages:
   data_ingestion:
-    cmd: python src/data_ingestion.py
+    cmd: python src/data_ingestion.py --output data/raw
     deps:
       - src/data_ingestion.py
     outs:
       - data/raw/medical_chatbot_raw.csv
+
+  data_preprocessing:
+    cmd: python src/data_preprocessing.py --input data/raw/medical_chatbot_raw.csv --output data/processed
+    deps:
+      - data/raw/medical_chatbot_raw.csv
+      - src/data_preprocessing.py
+    outs:
+      - data/processed/train.jsonl
+      - data/processed/val.jsonl
