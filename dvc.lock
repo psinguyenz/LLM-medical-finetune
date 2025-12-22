@@ -33,3 +33,30 @@ stages:
       hash: md5
       md5: 806e7dedfcd158058a986d6fcf4b3be7
       size: 121432
+  data_processing:
+    cmd: python src/data_processing.py --input_dir data/processed --output_dir 
+      data/tokenized --model_id Qwen/Qwen2.5-0.5B-Instruct
+    deps:
+    - path: data/processed/train.jsonl
+      hash: md5
+      md5: 2b141932642dc2497e724aa7113e7431
+      size: 1071048
+    - path: data/processed/val.jsonl
+      hash: md5
+      md5: 806e7dedfcd158058a986d6fcf4b3be7
+      size: 121432
+    - path: src/data_processing.py
+      hash: md5
+      md5: 530a5aaeda34e50c7f65dfd9f1817d78
+      size: 3517
+    outs:
+    - path: data/tokenized/train
+      hash: md5
+      md5: 05965f7a91e14c141153f398d8999f6f.dir
+      size: 2966448
+      nfiles: 3
+    - path: data/tokenized/val
+      hash: md5
+      md5: 109eb64d470b0f7d864517ab1b36b876.dir
+      size: 340030
+      nfiles: 3

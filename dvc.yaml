@@ -14,3 +14,13 @@ stages:
     outs:
       - data/processed/train.jsonl
       - data/processed/val.jsonl
+  
+  data_processing:
+    cmd: python src/data_processing.py --input_dir data/processed --output_dir data/tokenized --model_id Qwen/Qwen2.5-0.5B-Instruct
+    deps:
+      - data/processed/train.jsonl
+      - data/processed/val.jsonl
+      - src/data_processing.py
+    outs:
+      - data/tokenized/train
+      - data/tokenized/val
