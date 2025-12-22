@@ -1,0 +1,14 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/data_ingestion.py
+    deps:
+    - path: src/data_ingestion.py
+      hash: md5
+      md5: ff7f329adc158fdcee8eadb57a83388c
+      size: 1731
+    outs:
+    - path: data/raw/medical_chatbot_raw.csv
+      hash: md5
+      md5: 1d49cdcbeb950f858ec095319ae198f6
+      size: 267520764
