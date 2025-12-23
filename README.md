@@ -2,7 +2,6 @@
 
 [![DVC](https://img.shields.io/badge/MLOps-DVC-red.svg)](https://dvc.org/)
 [![Model](https://img.shields.io/badge/LLM-Qwen2.5--0.5B-blue)](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Dự án tập trung vào việc tinh chỉnh (Fine-tuning) mô hình ngôn ngữ lớn **Qwen2.5-0.5B** bằng kỹ thuật **QLoRA** để tối ưu hóa khả năng trả lời câu hỏi trong lĩnh vực y tế, kết hợp với hệ thống **RAG (Retrieval-Augmented Generation)** để đảm bảo tính chính xác dựa trên dữ liệu thực tế.
 
