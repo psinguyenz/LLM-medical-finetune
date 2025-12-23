@@ -60,3 +60,48 @@ stages:
       md5: 1e31dec7d565aec9f747abf3fcebd761.dir
       size: 291694
       nfiles: 3
+  model_building:
+    cmd: python src/model_building.py --input_dir data/tokenized --output_dir 
+      models/qwen-medical-finetuned
+    deps:
+    - path: data/tokenized/
+      hash: md5
+      md5: acd113bb5886eef4b2252f19187bbf13.dir
+      size: 2859212
+      nfiles: 7
+    - path: src/data_processing.py
+      hash: md5
+      md5: 9e40e60b8fbec5e94bbe71da1811939b
+      size: 3516
+    - path: src/model_building.py
+      hash: md5
+      md5: 10cc1e7de8316459ae95ce5dc49e41ab
+      size: 4096
+    outs:
+    - path: models/qwen-medical-finetuned/final_adapter
+      hash: md5
+      md5: a7185a09270a2751444f8163d84a51b0.dir
+      size: 24567414
+      nfiles: 11
+  model_evaluating:
+    cmd: python src/model_evaluating.py --val_file data/processed/val.jsonl 
+      --output_metrics metrics.json
+    deps:
+    - path: data/processed/val.jsonl
+      hash: md5
+      md5: 806e7dedfcd158058a986d6fcf4b3be7
+      size: 121432
+    - path: models/qwen-medical-finetuned/final_adapter
+      hash: md5
+      md5: a7185a09270a2751444f8163d84a51b0.dir
+      size: 24567414
+      nfiles: 11
+    - path: src/model_evaluating.py
+      hash: md5
+      md5: 74569545c51df9a704bd372c2845d154
+      size: 4363
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 0c7c99aa59e2a494f385af5765ea1f03
+      size: 391
