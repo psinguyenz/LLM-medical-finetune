@@ -60,9 +60,9 @@ python src/model_evaluating.py --output_metrics metrics.json
 ├── .dvc/                # Cấu hình quản lý dữ liệu phiên bản của DVC
 ├── data/                # Chứa dữ liệu thô và dữ liệu đã xử lý (DVC tracked)
 ├── src/                 # Mã nguồn chính xử lý LLM
-|   ├── data_ingestion.py   # Nhập dữ liệu
+│   ├── data_ingestion.py   # Nhập dữ liệu
 │   ├── data_preprocessing.py  # Tiền xử lý dữ liệu sang format ChatML
-|   ├── data_processing.py  # Data Collating
+│   ├── data_processing.py  # Data Collating
 │   ├── model_building.py   # Script thực hiện Fine-tuning QLoRA
 │   └── model_evaluating.py # Đánh giá đối chứng Base vs FT Model
 ├── .dvcignore           # Các file không cần DVC theo dõi
