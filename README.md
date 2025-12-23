@@ -52,18 +52,25 @@ dvc repro
 
 ###3. Kiểm tra kết quả đánh giá
 Lệnh này sẽ hiển thị bảng so sánh các chỉ số đạt được:
+📂 Cấu trúc dự án
+
 ```bash
 python src/model_evaluating.py --output_metrics metrics.json
 
-📂 Cấu trúc dự án
-├── data/                  # Quản lý bởi DVC (Dữ liệu y khoa thô & xử lý)
-├── models/                # Lưu trữ các bản nén Adapter (LoRA weights)
-├── src/
-│   ├── data_processing.py # Chuyển đổi dữ liệu sang format ChatML
-│   ├── model_building.py  # Huấn luyện QLoRA 4-bit
-│   └── model_evaluating.py# Script đánh giá đối chứng chuyên sâu
-├── dvc.yaml               # Cấu trúc pipeline dự án
-├── metrics.json           # File lưu trữ kết quả thực nghiệm
-└── requirements.txt       # Danh sách thư viện phụ thuộc
+├── .dvc/                # Cấu hình quản lý dữ liệu phiên bản của DVC
+├── data/                # Chứa dữ liệu thô và dữ liệu đã xử lý (DVC tracked)
+├── src/                 # Mã nguồn chính xử lý LLM
+|   ├── data_ingestion.py   # Nhập dữ liệu
+│   ├── data_preprocessing.py  # Tiền xử lý dữ liệu sang format ChatML
+|   ├── data_processing.py  # Data Collating
+│   ├── model_building.py   # Script thực hiện Fine-tuning QLoRA
+│   └── model_evaluating.py # Đánh giá đối chứng Base vs FT Model
+├── .dvcignore           # Các file không cần DVC theo dõi
+├── .gitignore           # Các file không cần Git theo dõi
+├── dvc.lock             # Trạng thái hiện tại của pipeline (máy học đã chạy xong)
+├── dvc.yaml             # Định nghĩa các stage huấn luyện và đánh giá
+├── evaluation_details.json # Chi tiết kết quả dự đoán (output của model_evaluating)
+├── metrics.json         # Tổng hợp chỉ số ROUGE (output của model_evaluating)
+└── requirements.txt     # Danh sách thư viện cần thiết để chạy dự án
 ```
 
