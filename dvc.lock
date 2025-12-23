@@ -47,16 +47,16 @@ stages:
       size: 121432
     - path: src/data_processing.py
       hash: md5
-      md5: 530a5aaeda34e50c7f65dfd9f1817d78
-      size: 3517
+      md5: 9e40e60b8fbec5e94bbe71da1811939b
+      size: 3516
     outs:
     - path: data/tokenized/train
       hash: md5
-      md5: 05965f7a91e14c141153f398d8999f6f.dir
-      size: 2966448
+      md5: 31a1a6e8f7de6701fcd023b0c52c7ad2.dir
+      size: 2567504
       nfiles: 3
     - path: data/tokenized/val
       hash: md5
-      md5: 109eb64d470b0f7d864517ab1b36b876.dir
-      size: 340030
+      md5: 1e31dec7d565aec9f747abf3fcebd761.dir
+      size: 291694
       nfiles: 3

@@ -31,10 +31,21 @@ stages:
   # Bước 4: Xây dựng và Huấn luyện mô hình (3 Epochs)
   model_building:
     # Lưu ý: Thêm export PYTHONPATH để tránh lỗi ModuleNotFoundError trên MINGW64
-    cmd: export PYTHONPATH=$PYTHONPATH:. && python src/model_building.py --input_dir data/tokenized --output_dir models/qwen-medical-finetuned
+    cmd: python src/model_building.py --input_dir data/tokenized --output_dir models/qwen-medical-finetuned
     deps:
       - data/tokenized/
       - src/model_building.py
       - src/data_processing.py
     outs:
       - models/qwen-medical-finetuned/final_adapter
+
+  # Bước 5: Đánh giá mô hình 
+  model_evaluation:
+    cmd: python src/model_evaluation.py --val_file data/processed/val.jsonl --output_metrics metrics.json
+    deps:
+      - data/processed/val.jsonl
+      - src/model_evaluation.py
+      - models/qwen-medical-finetuned/final_adapter
+    metrics:
+      - metrics.json: # DVC sẽ theo dõi file này như một report
+          cache: false
