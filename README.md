@@ -53,7 +53,7 @@ dvc repro
 ###3. Kiểm tra kết quả đánh giá
 Lệnh này sẽ hiển thị bảng so sánh các chỉ số đạt được:
 ```bash
-python src/model_evaluating.py --output_metrics metrics.json```
+python src/model_evaluating.py --output_metrics metrics.json
 
 📂 Cấu trúc dự án
 ├── data/                  # Quản lý bởi DVC (Dữ liệu y khoa thô & xử lý)
@@ -65,4 +65,5 @@ python src/model_evaluating.py --output_metrics metrics.json```
 ├── dvc.yaml               # Cấu trúc pipeline dự án
 ├── metrics.json           # File lưu trữ kết quả thực nghiệm
 └── requirements.txt       # Danh sách thư viện phụ thuộc
+```
 
