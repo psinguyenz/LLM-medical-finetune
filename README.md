@@ -52,14 +52,14 @@ cd LLM-medical-finetune
 pip install -r requirements.txt
 ```
 
-###2. Reproduce Pipeline
+### 2. Reproduce Pipeline
 Sử dụng DVC để chạy lại toàn bộ quy trình từ xử lý dữ liệu đến huấn luyện:
 
 ```bash
 dvc repro
 ```
 
-###3. Kiểm tra kết quả đánh giá
+### 3. Kiểm tra kết quả đánh giá
 Lệnh này sẽ hiển thị bảng so sánh các chỉ số đạt được:
 📂 Cấu trúc dự án
 
