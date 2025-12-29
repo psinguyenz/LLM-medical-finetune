@@ -74,3 +74,9 @@ python src/model_evaluating.py --output_metrics metrics.json
 └── requirements.txt     # Danh sách thư viện cần thiết để chạy dự án
 ```
 
+### P.S: use 
+```bash
+conda create -n llmmedical python=3.11 -y
+conda activate llmmedical
+```
+
