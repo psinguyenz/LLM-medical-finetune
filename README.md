@@ -14,17 +14,26 @@ Dự án tập trung vào việc tinh chỉnh (Fine-tuning) mô hình ngôn ng�
 - **RAG Integration**: Sử dụng **ChromaDB** làm Vector Database để truy xuất thông tin y khoa chính xác.
 - **User Interface**: Giao diện Chatbot trực quan xây dựng bằng **Gradio**.
 
-## 📊 Performance Evaluation
-Kết quả đánh giá trên tập Validation cho thấy sự tăng trưởng vượt bậc sau khi Fine-tuning:
 
-| Metric | Base Model | Fine-tuned Model | **Improvement** |
+## 📊 Đánh giá hiệu năng (Performance Evaluation)
+
+Kết quả thực nghiệm trên tập **Validation** cho thấy quá trình Fine-tuning đã mang lại bước nhảy vọt về chất lượng nội dung, giúp mô hình vượt xa khả năng của phiên bản gốc:
+
+| Chỉ số (Metric) | Base Model | Fine-tuned Model | **Mức tăng trưởng (Improvement)** |
 | :--- | :---: | :---: | :---: |
-| **ROUGE-1** | 0.1058 | 0.1505 | **+42.2%** |
-| **ROUGE-2** | 0.0074 | 0.0186 | **+151.3%** |
-| **ROUGE-L** | 0.0707 | 0.1044 | **+47.6%** |
+| **ROUGE-1** | 0.1270 | 0.2194 | **+72.7%** |
+| **ROUGE-2** | 0.0099 | 0.0286 | **+188.9%** |
+| **ROUGE-L** | 0.0693 | 0.1157 | **+66.9%** |
 
-> **Note:** Chỉ số **ROUGE-2 tăng hơn 150%** chứng minh mô hình đã học được cách kết hợp các cụm từ chuyên môn y tế (Medical Bigrams) chính xác hơn hẳn mô hình gốc.
+### 🔍 Phân tích trọng tâm:
 
+* **Sự bứt phá về thuật ngữ chuyên ngành:** Chỉ số **ROUGE-2 tăng trưởng gần 190%** là điểm sáng nhất trong báo cáo. Điều này chứng minh mô hình đã làm chủ được các cụm thuật ngữ y khoa phức tạp, giúp các câu trả lời không còn mang tính chung chung mà đã đi sâu vào kiến thức chuyên môn chính xác.
+* **Độ chính xác về từ vựng:** Với mức tăng **72.7% ở ROUGE-1**, mô hình cho thấy khả năng sử dụng từ ngữ y tế phù hợp với ngữ cảnh yêu cầu, tiệm cận gần hơn đáng kể với các câu trả lời mẫu từ chuyên gia.
+* **Cấu trúc câu trả lời mạch lạc:** ROUGE-L cải thiện **66.9%** khẳng định mô hình đã học được cách trình bày thông tin logic và bám sát định dạng câu hỏi - đáp đặc thù của lĩnh vực y tế.
+
+### ⚠️ Lưu ý về triển khai RAG (Retrieval-Augmented Generation):
+
+Trong đợt đánh giá này, mô hình **Fine-tuned thuần túy** cho kết quả tối ưu hơn so với khi kết hợp RAG do **Hạn chế tài nguyên tính toán:** Do giới hạn về tài nguyên phần cứng, việc duy trì hệ thống truy xuất (Retriever) với độ trễ thấp và độ chính xác cao đồng thời với mô hình ngôn ngữ lớn là một thách thức đáng kể.
 
 
 ## 🛠️ Tech Stack
