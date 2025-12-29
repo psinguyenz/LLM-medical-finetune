@@ -85,23 +85,52 @@ stages:
       nfiles: 11
   model_evaluating:
     cmd: python src/model_evaluating.py --val_file data/processed/val.jsonl 
-      --output_metrics metrics.json
+      --output_metrics metrics.json --vectorstore_path data/rag_vectorstore
     deps:
     - path: data/processed/val.jsonl
       hash: md5
       md5: 806e7dedfcd158058a986d6fcf4b3be7
       size: 121432
+    - path: data/rag_vectorstore
+      hash: md5
+      md5: 4211b85060192d9f61d86f46a4b4ab8c.dir
+      size: 2770194
+      nfiles: 2
     - path: models/qwen-medical-finetuned/final_adapter
       hash: md5
       md5: a7185a09270a2751444f8163d84a51b0.dir
       size: 24567414
       nfiles: 11
+    - path: src/model_RAG.py
+      hash: md5
+      md5: fab496aeaf465ad4165b6c94e87e318d
+      size: 9464
     - path: src/model_evaluating.py
       hash: md5
-      md5: 74569545c51df9a704bd372c2845d154
-      size: 4363
+      md5: c8389f383a197ef27edc726a1eaaf683
+      size: 9028
     outs:
     - path: metrics.json
       hash: md5
-      md5: 0c7c99aa59e2a494f385af5765ea1f03
-      size: 391
+      md5: c1ff2413f4bf81509ead9d72e9af70b8
+      size: 586
+  model_rag:
+    cmd: python src/model_RAG.py --model_base_id Qwen/Qwen2.5-0.5B-Instruct 
+      --adapter_path models/qwen-medical-finetuned/final_adapter 
+      --vectorstore_path data/rag_vectorstore
+    deps:
+    - path: models/qwen-medical-finetuned/final_adapter
+      hash: md5
+      md5: a7185a09270a2751444f8163d84a51b0.dir
+      size: 24567414
+      nfiles: 11
+    - path: src/model_RAG.py
+      hash: md5
+      md5: fab496aeaf465ad4165b6c94e87e318d
+      size: 9464
+    outs:
+    - path: data/rag_vectorstore
+      hash: md5
+      md5: 4211b85060192d9f61d86f46a4b4ab8c.dir
+      size: 2770194
+      nfiles: 2
