@@ -72,6 +72,7 @@ python src/model_evaluating.py --output_metrics metrics.json
 │   ├── data_ingestion.py   # Nhập dữ liệu
 │   ├── data_preprocessing.py  # Tiền xử lý dữ liệu sang format ChatML
 │   ├── data_processing.py  # Data Collating
+│   ├── model_RAG.py     # Script thêm RAG
 │   ├── model_building.py   # Script thực hiện Fine-tuning QLoRA
 │   └── model_evaluating.py # Đánh giá đối chứng Base vs FT Model
 ├── .dvcignore           # Các file không cần DVC theo dõi
