@@ -75,8 +75,10 @@ python src/model_evaluating.py --output_metrics metrics.json
 ```
 
 ### P.S: use 
+
 ```bash
 conda create -n llmmedical python=3.11 -y
 conda activate llmmedical
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu130 # to use GPU
 ```
 
