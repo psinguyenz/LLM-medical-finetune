@@ -27,13 +27,13 @@ Kết quả thực nghiệm trên tập **Validation** cho thấy quá trình Fi
 
 ### 🔍 Phân tích trọng tâm:
 
-* **Sự bứt phá về thuật ngữ chuyên ngành:** Chỉ số **ROUGE-2 tăng trưởng gần 190%** là điểm sáng nhất trong báo cáo. Điều này chứng minh mô hình đã làm chủ được các cụm thuật ngữ y khoa phức tạp, giúp các câu trả lời không còn mang tính chung chung mà đã đi sâu vào kiến thức chuyên môn chính xác.
+* **Sự bứt phá về thuật ngữ chuyên ngành:** Chỉ số **ROUGE-2 tăng trưởng gần 190%** là điểm sáng nhất. Điều này chứng minh mô hình đã làm chủ được các cụm thuật ngữ y khoa phức tạp, giúp các câu trả lời không còn mang tính chung chung mà đã đi sâu vào kiến thức chuyên môn chính xác.
 * **Độ chính xác về từ vựng:** Với mức tăng **72.7% ở ROUGE-1**, mô hình cho thấy khả năng sử dụng từ ngữ y tế phù hợp với ngữ cảnh yêu cầu, tiệm cận gần hơn đáng kể với các câu trả lời mẫu từ chuyên gia.
 * **Cấu trúc câu trả lời mạch lạc:** ROUGE-L cải thiện **66.9%** khẳng định mô hình đã học được cách trình bày thông tin logic và bám sát định dạng câu hỏi - đáp đặc thù của lĩnh vực y tế.
 
 ### ⚠️ Lưu ý về triển khai RAG (Retrieval-Augmented Generation):
 
-Trong đợt đánh giá này, mô hình **Fine-tuned thuần túy** cho kết quả tối ưu hơn so với khi kết hợp RAG do **Hạn chế tài nguyên tính toán:** Do giới hạn về tài nguyên phần cứng, việc duy trì hệ thống truy xuất (Retriever) với độ trễ thấp và độ chính xác cao đồng thời với mô hình ngôn ngữ lớn là một thách thức đáng kể.
+Trong đợt đánh giá này, mô hình **Fine-tuned thuần túy** cho kết quả tối ưu hơn so với khi kết hợp RAG do **Hạn chế tài nguyên tính toán:** Do giới hạn về tài nguyên phần cứng, việc duy trì hệ thống truy xuất (Retriever) với độ trễ thấp và độ chính xác cao đồng thời với mô hình ngôn ngữ lớn là một thách thức lớn.
 
 
 ## 🛠️ Tech Stack
