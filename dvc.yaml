@@ -39,13 +39,24 @@ stages:
     outs:
       - models/qwen-medical-finetuned/final_adapter
 
-  # Bước 5: Đánh giá mô hình 
+  # Bước 5: Thêm RAG
+  model_rag:
+    cmd: python src/model_RAG.py --model_base_id Qwen/Qwen2.5-0.5B-Instruct --adapter_path models/qwen-medical-finetuned/final_adapter --vectorstore_path data/rag_vectorstore
+    deps:
+      - models/qwen-medical-finetuned/final_adapter
+      - src/model_RAG.py
+    outs:
+      - data/rag_vectorstore
+
+  # Bước 6: Đánh giá mô hình 
   model_evaluating:
-    cmd: python src/model_evaluating.py --val_file data/processed/val.jsonl --output_metrics metrics.json
+    cmd: python src/model_evaluating.py --val_file data/processed/val.jsonl --output_metrics metrics.json --vectorstore_path data/rag_vectorstore
     deps:
       - data/processed/val.jsonl
       - src/model_evaluating.py
+      - src/model_RAG.py
       - models/qwen-medical-finetuned/final_adapter
+      - data/rag_vectorstore
     metrics:
       - metrics.json: # DVC sẽ theo dõi file này như một report
           cache: false
